@@ -1,17 +1,48 @@
 class, relation, value, modifier
-Agitator, Skills, Public Speaking,,
-Agitator, Skills, Read/Write,,
-Agitator, Career Exits, Charlatan,,
-Agitator, Career Exits, Demagogue,,
-Agitator, Career Exits, Outlaw,,
-Alchemist's Apprentice, Skills, Brewing,,
-Alchemist's Apprentice, Skills, Evaluate,,
-Alchemist's Apprentice, Skills, Read/Write,,
-Alchemist's Apprentice, Skills, Chemistry,50,
-Alchemist's Apprentice, Career Exits, Alchemist, level 1,
-Alchemist's Apprentice, Career Exits, Bawd,,
-Alchemist's Apprentice, Career Exits, Charlatan,,
-Alchemist's Apprentice, Career Exits, Counterfeiter,,
-Alchemist's Apprentice, Career Exits, Entertainer, Bunko Artist,
-Alchemist's Apprentice, Career Exits, Graver Robber,,
-Alchemist's Apprentice, Career Exits, Prospector,,
+Agitator, Skills, Public Speaking,
+Agitator, Skills, Read/Write,
+Agitator, Career Exits, Charlatan,
+Agitator, Career Exits, Demagogue,
+Agitator, Career Exits, Outlaw,
+Alchemist's Apprentice, Skills, Brewing,
+Alchemist's Apprentice, Skills, Evaluate,
+Alchemist's Apprentice, Skills, Read/Write,
+Alchemist's Apprentice, Skills, Chemistry, 50
+Alchemist's Apprentice, Career Exits, Alchemist, level 1
+Alchemist's Apprentice, Career Exits, Bawd,
+Alchemist's Apprentice, Career Exits, Charlatan,
+Alchemist's Apprentice, Career Exits, Counterfeiter,
+Alchemist's Apprentice, Career Exits, Entertainer, Bunko Artist
+Alchemist's Apprentice, Career Exits, Graver Robber,
+Alchemist's Apprentice, Career Exits, Prospector,
+Artisans' Apprentice, Skills, Drive Cart,
+Artisans' Apprentice, Skills, Very Resilient, 25
+Artisans' Apprentice, Skills, Read/Write, 25
+Artisans' Apprentice, Career Exits, Artisan, (same trade only)
+Artisans' Apprentice, Career Exits, Bodyguard,
+Artisans' Apprentice, Career Exits, Footpad,
+Bawd, Skills, Bribery,
+Bawd, Skills, Secret Language - Thieves' Tongue,
+Bawd, Skills, Street Fighting,
+Bawd, Skills, Wit, 25
+Bawd, Career Exits, Bodyguard,
+Bawd, Career Exits, Fence,
+Beggar, Skills, Begging,
+Beggar, Skills, Concealment Urban,
+Beggar, Skills, Secret Language - Thieves' Tongue,
+Beggar, Skills, Secret Signs - Thieves' Signs,
+Beggar, Skills, Silent Move Urban,
+Beggar, Skills, Consume Alcohol, 25
+Beggar, Career Exits, Bodyguard,
+Beggar, Career Exits, Racketeer,
+Beggar, Career Exits, Rat Catcher,
+Boatman, Skills, Fish,
+Boatman, Skills, Orientation,
+Boatman, Skills, River Lore,
+Boatman, Skills, Row,
+Boatman, Skills, Very Strong, 50
+Boatman, Skills, Consume Alcohol, 25
+Boatman, Skills, Boat Building, 25
+Boatman, Career Exits, Outlaw,
+Boatman, Career Exits, Seaman,
+Boatman, Career Exits, Smuggler,
