@@ -1,6 +1,6 @@
 drop table classes_csv;
 
-create table classes_csv (class VARCHAR(50), relation VARCHAR(20), 
+create table classes_csv (class_name VARCHAR(50), relation VARCHAR(20), 
                           value VARCHAR(50), modifier VARCHAR(50));
                           
 truncate table classes_csv;
@@ -18,7 +18,7 @@ lines terminated by '\n';
 
 select * from classes_csv;
 
-select distinct class from classes_csv order by class;
+select distinct class_name from classes_csv order by class_name;
 select distinct relation from classes_csv order by relation;
 select distinct value from classes_csv where relation like '%Skills%' order by value;
 select distinct value from classes_csv where relation like '%Career Exits%' order by value;
