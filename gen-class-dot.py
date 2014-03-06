@@ -1,26 +1,18 @@
-import ConfigParser
 import io
-import sqlalchemy
-from sqlalchemy import Table, Column, Integer, String, MetaData, ForeignKey
+import sys
+import engine_utils
+from config_parser import get_options
+from warhammer_model import get_classes_model
 
-metadata = MetaData()
-config = ConfigParser.RawConfigParser(allow_no_value=True)
-config.read('warhammer.ini')
+options = get_options(sys.argv[1])
+engine = engine_utils.create_mysql_engine(options)
+metadata, classes = get_classes_model(options)
+#  Figure out what create_all is for
+#  metadata.create_all(engine)
 
-classes_table = config.get("classes","classes_csv")
-classes = Table(classes_table, metadata, Column('class_name', String), Column('relation', String), Column('value', String), Column('modifier', String))
-
-user = config.get("mysqld","user")
-password = config.get("mysqld","password")
-password = ':'+password if password else ''
-
-host = config.get("mysqld","host")
-engine = sqlalchemy.create_engine('mysql://'+user+password+'@'+host)
-
-warhammerdb = config.get("classes","warhammerdb")
+warhammerdb = options['classes']['warhammerdb']
 engine.execute("use "+warhammerdb)
 
-metadata.create_all(engine)
 from sqlalchemy.sql import select
 from sqlalchemy import and_, or_, not_ 
 
