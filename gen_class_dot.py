@@ -5,18 +5,21 @@ import sys, getopt
 import engine_utils
 from config_parser import get_options
 from warhammer_model import get_classes_model
+from sqlalchemy import MetaData
 
 def main(argv):
    
     config_file = argv[0] 
     options = get_options(config_file)
-    engine = engine_utils.create_mysql_engine(options)
-    metadata, classes = get_classes_model(options)
+    
+    warhammerdb = options['classes']['warhammerdb']
+    engine = engine_utils.create_mysql_engine(options, warhammerdb)
+    metadata = MetaData()
+    classes = get_classes_model(options, metadata)
     #  Figure out what create_all is for
     #  metadata.create_all(engine)
 
-    warhammerdb = options['classes']['warhammerdb']
-    engine.execute("use "+warhammerdb)
+    #engine.execute("use "+warhammerdb)
 
     from sqlalchemy.sql import select
     from sqlalchemy import and_, or_, not_ 

@@ -1,0 +1,9 @@
+[mysqld]
+user = user
+password = password
+host = localhost
+
+[classes]
+warhammerdb = warhammer
+csv_file = classes.csv
+classes_csv = classes_csv
