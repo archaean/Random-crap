@@ -10,7 +10,7 @@ def main (argv):
     options = get_options(config_file)
 
     warhammerdb = options['classes']['warhammerdb']
-    engine = engine_utils.create_mysql_engine(options, warhammerdb)
+    engine = engine_utils.create_engine(argv, options, warhammerdb)
     metadata = MetaData(bind=engine)
     table = get_classes_model(options, metadata)
     

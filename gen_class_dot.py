@@ -13,13 +13,9 @@ def main(argv):
     options = get_options(config_file)
     
     warhammerdb = options['classes']['warhammerdb']
-    engine = engine_utils.create_mysql_engine(options, warhammerdb)
+    engine = engine_utils.create_engine(argv, options, warhammerdb)
     metadata = MetaData()
     classes = get_classes_model(options, metadata)
-    #  Figure out what create_all is for
-    #  metadata.create_all(engine)
-
-    #engine.execute("use "+warhammerdb)
 
     from sqlalchemy.sql import select
     from sqlalchemy import and_, or_, not_ 
