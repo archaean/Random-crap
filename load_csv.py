@@ -16,7 +16,11 @@ def main (argv):
     
     #create table if it doesn't exist and a truncate
     metadata.create_all(engine)
-    engine.execute('truncate table '+str(table))
+    if argv[1] == 'sqlite':
+        engine.execute('delete from '+str(table))
+        engine.execute('vacuum')
+    else:
+        engine.execute('truncate table '+str(table))
 
     #load csv_file
     csv_file = options['classes']['csv_file']
