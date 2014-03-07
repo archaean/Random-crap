@@ -1,7 +1,6 @@
 import sqlalchemy
 
-def create_engine(argv, options, database):
-    db_type = argv[1]
+def create_engine(db_type, options, database):
     if db_type == 'sqlite':
         engine = create_sqlite_engine(options, database)
     elif db_type == 'mysql':

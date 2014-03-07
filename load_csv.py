@@ -1,22 +1,25 @@
 import csv
 import engine_utils
 import sys
+from arg_parser import parse_args
 from config_parser import get_options
 from sqlalchemy import MetaData
 from warhammer_model import get_classes_model
 
 def main (argv):
-    config_file = argv[0]
+    opts, args = parse_args(argv[0],argv[1:])
+    config_file = opts['configfile']
+    db_type = opts['dbtype']
     options = get_options(config_file)
 
     warhammerdb = options['classes']['warhammerdb']
-    engine = engine_utils.create_engine(argv, options, warhammerdb)
+    engine = engine_utils.create_engine(db_type, options, warhammerdb)
     metadata = MetaData(bind=engine)
     table = get_classes_model(options, metadata)
     
     #create table if it doesn't exist and a truncate
     metadata.create_all(engine)
-    if argv[1] == 'sqlite':
+    if db_type == 'sqlite':
         engine.execute('delete from '+str(table))
         engine.execute('vacuum')
     else:
@@ -33,4 +36,4 @@ def main (argv):
             conn.execute(ins)
 
 if __name__ == "__main__":
-    main(sys.argv[1:])
+    main(sys.argv)
