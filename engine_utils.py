@@ -1,3 +1,20 @@
+"""
+>>> from config_parser import get_options
+>>> options = get_options('warhammer.ini.example')
+>>> create_engine('sqlite', options, None)
+Engine(sqlite://)
+>>> create_engine('sqlite', options, 'huh')
+Engine(sqlite:///huh.db)
+>>> create_engine('invalid', options, 'some')
+Traceback (most recent call last):
+...
+Exception: Invalid database: invalid
+>>> create_engine('mysql', options, 'what')
+Traceback (most recent call last):
+...
+OperationalError: (OperationalError) (1045, "Access denied for user 'user'@'localhost' (using password: YES)") None None
+"""
+
 import sqlalchemy
 
 def create_engine(db_type, options, database):
@@ -10,7 +27,8 @@ def create_engine(db_type, options, database):
     return engine
 
 def create_sqlite_engine(options, database):
-    engine = sqlalchemy.create_engine('sqlite:///'+database+'.db')
+    database_sqlite = '/'+database+'.db' if database else ''
+    engine = sqlalchemy.create_engine('sqlite://'+database_sqlite)
     return engine
 
 def create_mysql_engine(options, database):
