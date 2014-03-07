@@ -23,7 +23,7 @@ def main(argv):
     from sqlalchemy.sql import select
     from sqlalchemy import and_, or_, not_ 
     
-    s = select([classes.c.class_name, classes.c.relation, classes.c.value])
+    s = select([classes.c.class_name, classes.c.relation, classes.c.value, classes.c.modifier])
     s = s.where(classes.c.relation =='Career Exits')
 
     conn = engine.connect()
@@ -31,7 +31,7 @@ def main(argv):
 
     print 'digraph Careers {'
     for row in result:
-	    print '\t\"'+row[0]+'\" -> \"'+row[2]+'\";'
+	    print '\t\"'+row[0]+'\" -> \"'+row[2]+'\"' + ' [ label=\"'+row[3]+'\" ];'
     print '}'
 
 if __name__ == "__main__":
