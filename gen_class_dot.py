@@ -30,8 +30,14 @@ def main(argv):
     result = conn.execute(s).fetchall()
 
     print 'digraph Careers {'
+    print """
+    splines=ortho;
+    sep="+25,25";
+    overlap=scalexy;
+    nodesep=0.6;
+    node [fontsize=11];"""
     for row in result:
-	    print '\t\"'+row[0]+'\" -> \"'+row[2]+'\"' + ' [ label=\"'+row[3]+'\" ];'
+	    print '\t\"'+row[0]+'\" -> \"'+row[2]+'\"' + ' [ taillabel=\"'+row[3]+'\" ];'
     print '}'
 
 if __name__ == "__main__":
