@@ -17,38 +17,40 @@ OperationalError: (OperationalError) (1045, "Access denied for user 'user'@'loca
 
 import sqlalchemy
 
+
 def create_engine(db_type, options, database):
     if db_type == 'sqlite':
         engine = create_sqlite_engine(options, database)
     elif db_type == 'mysql':
         engine = create_mysql_engine(options, database)
     else:
-        raise Exception('Invalid database: '+db_type)
+        raise Exception('Invalid database: ' + db_type)
     return engine
 
+
 def create_sqlite_engine(options, database):
-    database_sqlite = '/'+database+'.db' if database else ''
-    engine = sqlalchemy.create_engine('sqlite://'+database_sqlite)
+    database_sqlite = '/' + database + '.db' if database else ''
+    engine = sqlalchemy.create_engine('sqlite://' + database_sqlite)
     return engine
+
 
 def create_mysql_engine(options, database):
     mysqld_op = options['mysqld']
-    
     user = mysqld_op['user']
     password = mysqld_op['password']
-    password = ':'+password if password else ''
+    password = ':' + password if password else ''
     host = mysqld_op['host']
 
-    mysql_connect = 'mysql://'+user+password+'@'+host   
-    engine = sqlalchemy.create_engine(mysql_connect+'/'+database)
+    mysql_connect = 'mysql://' + user + password + '@' + host
+    engine = sqlalchemy.create_engine(mysql_connect + '/' + database)
 
     try:
         engine.execute("select 1")
     except Exception as inst:
         #TODO logging
-        print 'INFO: '+str(inst)
-        print 'INFO: Creating database '+database
+        print 'INFO: ' + str(inst)
+        print 'INFO: Creating database ' + database
         preengine = sqlalchemy.create_engine(mysql_connect)
-        preengine.execute("create database if not exists "+database)
+        preengine.execute("create database if not exists " + database)
 
     return engine

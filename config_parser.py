@@ -1,5 +1,6 @@
 from ConfigParser import RawConfigParser
 
+
 def get_options(config_file):
     """
     >>> get_options('warhammer.ini.example')
