@@ -26,14 +26,17 @@ def generate_dot(engine, classes):
     from sqlalchemy.sql import select
     #from sqlalchemy import and_, or_, not_
 
-    s = select([classes.c.class_name,
-                classes.c.relation,
-                classes.c.value,
-                classes.c.modifier])
-    s = s.where(classes.c.relation == 'Career Exits')
+    def select_relation_where(where_str):
+        s = select([classes.c.class_name,
+                    classes.c.relation,
+                    classes.c.value,
+                    classes.c.modifier])
+        s = s.where(classes.c.relation == where_str)
+        return s
 
     conn = engine.connect()
-    result = conn.execute(s).fetchall()
+    career_exits = conn.execute(select_relation_where('Career Exits')).fetchall()
+    career_paths = conn.execute(select_relation_where('Career Paths')).fetchall()
 
     print 'digraph Careers {'
     print """
@@ -42,8 +45,14 @@ def generate_dot(engine, classes):
     overlap=scalexy;
     nodesep=0.6;
     node [fontsize=11];"""
-    for row in result:
+    for row in career_exits:
         print '\t\"' + row[0] + '\" -> \"' + row[2] + '\"' + ' [ taillabel=\"' + row[3] + '\" ];'
+    for row in career_paths:
+        try:
+            print '\t\"' + row[0] + '\" -> \"' + row[0] + ':' + row[2] + '\"' + ' [ style=dotted taillabel=\"' + row[3] + '\" ];'
+        except Exception as inst:
+            print row
+            raise inst
     print '}'
 
 
