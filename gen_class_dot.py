@@ -19,7 +19,11 @@ def main(argv):
     engine = engine_utils.create_engine(db_type, options, warhammerdb)
     metadata = MetaData()
     classes = get_classes_model(options, metadata)
+    
+    generate_dot(engine, classes)
 
+
+def generate_dot(engine, classes):
     from sqlalchemy.sql import select
     from sqlalchemy import and_, or_, not_ 
     
@@ -39,6 +43,7 @@ def main(argv):
     for row in result:
 	    print '\t\"'+row[0]+'\" -> \"'+row[2]+'\"' + ' [ taillabel=\"'+row[3]+'\" ];'
     print '}'
+
 
 if __name__ == "__main__":
     main(sys.argv)

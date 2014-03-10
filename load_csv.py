@@ -8,8 +8,8 @@ from warhammer_model import get_classes_model
 
 def main (argv):
     opts, args = parse_args(argv[0],argv[1:])
-    config_file = opts['configfile']
     db_type = opts['dbtype']
+    config_file = opts['configfile']
     options = get_options(config_file)
 
     warhammerdb = options['classes']['warhammerdb']
@@ -19,6 +19,11 @@ def main (argv):
     
     #create table if it doesn't exist and a truncate
     metadata.create_all(engine)
+    load_csv(engine, table, options, opts)    
+
+
+def load_csv(engine, table, options, opts):
+    db_type = opts['dbtype']
     if db_type == 'sqlite':
         engine.execute('delete from '+str(table))
         engine.execute('vacuum')
