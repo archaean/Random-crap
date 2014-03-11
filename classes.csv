@@ -12,7 +12,7 @@ Alchemists' Apprentice,Career Exits,Alchemist,level 1
 Alchemists' Apprentice,Career Exits,Bawd,
 Alchemists' Apprentice,Career Exits,Charlatan,
 Alchemists' Apprentice,Career Exits,Counterfeiter,
-Alchemists' Apprentice,Career Exits,Entertainer,Bunko Artist
+Alchemists' Apprentice,Career Exits,Entertainer:Bunko Artist,
 Alchemists' Apprentice,Career Exits,Grave Robber,
 Alchemists' Apprentice,Career Exits,Prospector,
 Artisans' Apprentice,Skills,Drive Cart,
@@ -254,7 +254,7 @@ Hunter,Career Exits,Druid,
 Hunter,Career Exits,Outlaw,
 Hunter,Career Exits,Scout,
 Hypnotist,Career Exits,Charlatan,
-Hypnotist,Career Exits,Entertainer,Hypnotist
+Hypnotist,Career Exits,Entertainer:Hypnotist,
 Hypnotist,Career Exits,Physician,
 Initiate,Career Exits,Agitator, 
 Initiate,Career Exits,Cleric,level 1
