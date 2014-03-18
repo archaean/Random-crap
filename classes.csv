@@ -253,24 +253,61 @@ Hunter,Skills,Immunity to Poisons,25
 Hunter,Career Exits,Druid,
 Hunter,Career Exits,Outlaw,
 Hunter,Career Exits,Scout,
+Hypnotist,Skills,Hypnotise,
+Hypnotist,Skills,Magical Awareness,
 Hypnotist,Career Exits,Charlatan,
 Hypnotist,Career Exits,Entertainer:Hypnotist,
 Hypnotist,Career Exits,Physician,
-Initiate,Career Exits,Agitator, 
+Initiate,Skills,Read/Write,
+Initiate,Skills,Scroll Lore,
+Initiate,Skills,Secret Language - Classical,
+Initiate,Skills,Theology,
+Initiate,Career Exits,Agitator,
 Initiate,Career Exits,Cleric,level 1
+Jailer,Skills,Immunity to Disease,
+Jailer,Skills,Immunity to Poison,
+Jailer,Skills,Palm Object,
+Jailer,Skills,Silent Move Urban,
+Jailer,Skills,Very Resilient,50
+Jailer,Skills,Consume Alcohol,25
+Jailer,Skills,Very Strong,25
 Jailer,Career Exits,Bodyguard,
 Jailer,Career Exits,Rat Catcher,
 Jailer,Career Exits,Slaver,
 Jailer,Career Exits,Torturer,
+Labourer,Skills,Scale Sheer Surface,
+Labourer,Skills,Consume Alcohol,75
+Labourer,Skills,Sing,75
+Labourer,Skills,Carpentry,50
+Labourer,Skills,Drive Cart,50
+Labourer,Skills,Engineering,25
+Labourer,Skills,Very Resilient,25
+Labourer,Skills,Very Strong,25
 Labourer,Career Exits,Artillerist,	
 Labourer,Career Exits,Bodyguard,
 Labourer,Career Exits,Footpad,
+Marine,Skills,Consume Alcohol,
+Marine,Skills,Disarm,
+Marine,Skills,Dodge Blow,
+Marine,Skills,Row,
+Marine,Skills,Secret Language - Battle Tongue,
+Marine,Skills,Strike Mighty Blow,
+Marine,Skills,Strike to Stun,
+Marine,Skills,Swim,25
 Marine,Career Exits,Artillerist,
 Marine,Career Exits,Bounty Hunter,
 Marine,Career Exits,Footpad,
 Marine,Career Exits,Mercenary Captain,
 Marine,Career Exits,Sea Captain,
 Marine,Career Exits,Slaver,
+Mercenary,Skills,Disarm,
+Mercenary,Skills,Dodge Blow,
+Mercenary,Skills,Secret Language - Battle Tongue,
+Mercenary,Skills,Strike Mighty Blow,
+Mercenary,Skills,Strike to Stun,
+Mercenary,Skills,Drive Cart,75
+Mercenary,Skills,Animal Care,50
+Mercenary,Skills,Ride,25
 Mercenary,Career Exits,Artillerist,
 Mercenary,Career Exits,Gunner,
 Mercenary,Career Exits,Mercenary Captain,
@@ -278,10 +315,24 @@ Mercenary,Career Exits,Outlaw Chief,
 Mercenary,Career Exits,Sapper,
 Mercenary,Career Exits,Slaver,
 Mercenary,Career Exits,Tunnel Fighter,
+Militiaman,Skills,Dodge Blow,
+Militiaman,Skills,Strike Mighty Blow,
+Militiaman,Skills,Drive Cart,50
+Militiaman,Skills,Animal Care,25
+Militiaman,Skills,Ride,25
 Militiaman,Career Exits,Footpad,
 Militiaman,Career Exits,Mercenary,
 Militiaman,Career Exits,Outlaw,
+Minstrel,Skills,Charm,
+Minstrel,Skills,Ettiquette,
+Minstrel,Skills,Musicianship,
+Minstrel,Skills,Public Speaking,
+Minstrel,Skills,Sing,
 Minstrel,Career Exits,Charlatan,
+Muleskinner,Skills,Animal Care,
+Muleskinner,Skills,Specialist - Flail Weapons,
+Muleskinner,Skills,Drive Cart,75
+Muleskinner,Skills,Animal Training,25
 Muleskinner,Career Exits,Outlaw,	
 Muleskinner,Career Exits,Scout,
 Muleskinner,Career Exits,Smuggler,
