@@ -1,64 +1,53 @@
 class die(object):
-    def __init__(self, name, side, succ, perc):
+    def __init__(self, name, sides, parity, num_success=[0], num_boon=[0]):
         self.name = name
-        self.side = side
-        self.succ = succ
-        self.perc = perc
+        self.sides = sides
+        self.parity = parity
+        self.num_success = num_success
 
-    def percentages(self):
-        return [(x, float(y)/self.side) for (x, y) in self.perc]
+    def chance_of_success(self):
+        failure = [(0, float(self.sides - sum(self.num_success))/self.sides)]
+        num_success_and_side = zip(range(1, len(self.num_success)+1), self.num_success)
+        success = [(x, float(y)/self.sides) for (x, y) in num_success_and_side]
+        return failure + success
 
     def __repr__(self):
         return self.name
 
+    def pool(self, num):
+        return [die(self.name, self.sides, self.parity, self.num_success) for num in range(num)]
+
 succ = lambda x, y: x+y
 fail = lambda x, y: x-y
 
-char = die('char', 8, succ, [(0, 4), (1, 4)])
-cons = die('conserv', 10, succ, [(0, 3), (1, 7)])
-reck = die('reckless', 10, succ, [(0, 5), (1, 3), (2, 2)])
-fort = die('fortune', 6, succ, [(0, 4), (1, 2)])
-spec = die('special', 6, succ, [(0, 3), (1, 3)])
-chal = die('challenge', 8, fail, [(0, 4), (1, 2), (2, 2)])
-misf = die('misfortune', 6, fail, [(0, 4), (1, 2)])
-
-pool = [reck, char, char, char, chal, misf]
-
-class node(object):
-    def __init__(self, value):
-        self.value = value
-        self.children = []
-
-    def __repr__(self, level=0):
-        ret = "\t"*level+repr(self.value)+"\n"
-        for child in self.children:
-            ret += child.__repr__(level+1)
-        return ret
-
 def build_tree(parent_node, pool):
-    if(len(pool)==0): return parent_node.value
+    if(len(pool)==0): return parent_node
     head, tail = pool[0], pool[1:]
 
     result = []
-    for perc in head.percentages():
-        apply = (head.succ(parent_node.value[0], perc[0]), parent_node.value[1]*perc[1])
-        child_node = node(apply)
-        parent_node.children.extend([child_node])
+    for perc in head.chance_of_success():
+        apply = (head.parity(parent_node[0], perc[0]), parent_node[1]*perc[1])
         if tail:
-            result.extend(build_tree(child_node, tail))
+            result.extend(build_tree(apply, tail))
         else:
-            result.append(build_tree(child_node, tail))
+            result.append(build_tree(apply, tail))
 
     return result
 
 def success(pool):
-    return sum([x[1] for x in probs if x[0] > 0])
+    return sum([x[1] for x in pool if x[0] > 0])
 
-def gen_pool(nchar=0, ncons=0, nreck=0, nfort=0, nspec=0, nchal=0, nmisf=0):
-    pass
+char = die('characteristic', 8, succ, [4])
+cons = die('conservative', 10, succ, [7])
+reck = die('reckless', 10, succ, [3, 2])
+fort = die('fortune', 6, succ, [2])
+spec = die('specialization', 6, succ, [3])
+chal = die('challenge', 8, fail, [2, 2])
+misf = die('misfortune', 6, fail, [2])
 
-begin = node((0, 1))
+pool = char.pool(8) + cons.pool(0) + reck.pool(0) + fort.pool(0) + spec.pool(0) + \
+       chal.pool(1) + misf.pool(3)
+
+begin = (0, 1)
 probs = build_tree(begin, pool)
-print "Success for pool "+str(pool)+" is:", success(probs)
-
-
+print "Success for pool %s is: %.2f%%" % (str(pool), success(probs)*100)
