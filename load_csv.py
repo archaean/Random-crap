@@ -1,11 +1,10 @@
 import csv
 import engine_utils
+import importlib
 import sys
 from arg_parser import parse_args
 from config_parser import get_options
 from sqlalchemy import MetaData
-from warhammer_model import get_classes_model
-
 
 def main(argv):
     opts, args = parse_args(argv[0], argv[1:])
@@ -16,7 +15,10 @@ def main(argv):
     warhammerdb = options['classes']['warhammerdb']
     engine = engine_utils.create_engine(db_type, options, warhammerdb)
     metadata = MetaData(bind=engine)
-    table = get_classes_model(options, metadata)
+
+    csv_model = importlib.import_module(options['classes']['csv_model'])   
+     
+    table = csv_model.get_classes_model(options, metadata)
 
     #create table if it doesn't exist and a truncate
     metadata.create_all(engine)

@@ -6,4 +6,5 @@ host = localhost
 [classes]
 warhammerdb = warhammer
 csv_file = classes.csv
+csv_model = warhammer_model
 classes_csv = classes_csv
